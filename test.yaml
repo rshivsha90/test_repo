@@ -1,0 +1,43 @@
+swagger: '2.0'
+info:
+  version: 3.0.0.0
+  title: testAPI
+  license:
+    name: test
+schemes:
+  - http
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+  BasicAuth:
+    type: basic
+security:
+    - Bearer: []
+paths:
+  /api/v1.0/login:
+    post:
+      summary: Login to test
+      description: API is used to login to test
+
+      tags:
+       - Authentication
+      security:
+        - BasicAuth: []
+      responses:
+        200:
+          description: Login successful
+          schema:
+            type: object
+            properties:
+              token_name:
+                type: string
+                description: Access token
+              token_type:
+                type: string
+                description: Token type
+              expires_in:
+                type: number
+                description: Token expiry time
+                example: 30
